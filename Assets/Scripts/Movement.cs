@@ -35,7 +35,7 @@ public class Movement : MonoBehaviour
         PlayerMove();
     }
 
-    private void TouchInput()
+    void TouchInput()
     {
         if (Input.touchCount > 0)   //touch the screen with one finger at least
         {
