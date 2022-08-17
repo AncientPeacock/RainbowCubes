@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3155280600808210472}
   m_Layer: 0
   m_Name: Wall Cube
-  m_TagString: Untagged
+  m_TagString: ObstacleCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
