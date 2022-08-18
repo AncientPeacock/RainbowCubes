@@ -19,10 +19,11 @@ public class StackerCube : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
-    void FixedUpdate() //cube position is more stable with FixedUpdate() but it is breaks the stuck mechanic (while stuck.Count > 3)
+    void FixedUpdate() //cube position is more stable with FixedUpdate()
     {
         xPos = transform.position.x;
         yPos = transform.position.y;
+        Debug.Log("fixY: " + yPos);
         zPos = transform.position.z;
     }
 
@@ -55,10 +56,13 @@ public class StackerCube : MonoBehaviour
 
         other.gameObject.transform.parent = gameObject.transform; //SetParent is slightly slower
 
+        Debug.Log("ypos0: " + yPos);
         yPos = yPos - stack.Count;
+        Debug.Log("ypos: " + yPos + " " + stack.Count);
         other.gameObject.transform.position = new Vector3(xPos, yPos, zPos);
 
         other.gameObject.GetComponent<BoxCollider>().isTrigger = true; //otherwise the cube is stuck in the obstacle.
+        other.gameObject.tag = "Untagged"; //otherwise the stuck mechanic (while stuck.Count > 3) breaks cause triggers interact eachother
     }
 
     void PopedCube(Collider other)
