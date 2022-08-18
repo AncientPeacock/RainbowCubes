@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ObstacleCubes : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    BoxCollider boxCollider;
+
+    void Start() 
     {
-        
+        boxCollider = GetComponent<BoxCollider>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GetObstacleCubeColliderSize()
     {
-        
+        boxCollider.size = new Vector3(boxCollider.size.x, boxCollider.size.y, boxCollider.size.z);
     }
 }
