@@ -9,51 +9,45 @@ public class StackerCube : MonoBehaviour
     BoxCollider boxCollider;
     NavMeshAgent navMeshAgent;
 
-    float xSize, ySize, zSize;
-    // float xPos, yPos, zPos;
+    float xColliderSize, yColliderSize, zColliderSize;
+    float xPos, yPos, zPos;
 
     void Start()
     {
-        xSize = 1f;
-        ySize = 1f;
-        zSize = 1f;
-
-        // xPos = transform.position.x;
-        // yPos = transform.position.y;
-        // zPos = transform.position.z;
-
         stack = new Stack<GameObject>();
-        boxCollider = GetComponent<BoxCollider>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
 
-        boxCollider.size = new Vector3(xSize, ySize, zSize);
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        boxCollider = GetComponent<BoxCollider>();
+
+        xColliderSize = 1f;
+        yColliderSize = 1f;
+        zColliderSize = 1f;
+
+        boxCollider.size = new Vector3(xColliderSize, yColliderSize, zColliderSize);
     }
 
-    void Update()
+    void FixedUpdate() //cube position is more stable with FixedUpdate()
     {
-        
+        xPos = transform.position.x;
+        yPos = transform.position.y;
+        zPos = transform.position.z;
     }
 
     void OnTriggerEnter(Collider other) 
     {
         if (other.gameObject.tag == "StackableCube")
         {
-            //other.gameObject.transform.parent = gameObject.transform;
             stack.Push(other.gameObject);
-            Debug.Log("stack: " + stack.Count);
+            other.gameObject.transform.parent = gameObject.transform; //SetParent is slightly slower
 
-            other.gameObject.transform.SetParent(gameObject.transform);
-            // yPos --;
-            // other.gameObject.transform.position = transform.position;
-            // Debug.Log("ypos: " + yPos);
+            if (stack.Count >= 1)
+            {
+                yPos = yPos - stack.Count;
+                other.gameObject.transform.position = new Vector3(xPos, yPos, zPos);
+            }
 
-            ySize++;
-            Debug.Log("y: " + ySize);
-            
+            yColliderSize++;
             navMeshAgent.baseOffset++;
-            Debug.Log("navMesh" + navMeshAgent);
-
-            //other.gameObject.tag = "Untagged";
         }
 
         else if (other.gameObject.tag == "ObstacleCube")
@@ -61,15 +55,13 @@ public class StackerCube : MonoBehaviour
             if (stack.Count >= 1)
             {
                 stack.Pop();
-                Debug.Log("stackpop: " + stack.Count);
 
                 //child.transform.SetParent(null);
+                //other.gameObject.transform.SetParent(null, true);
+                other.transform.parent.gameObject.SetActive(false);
 
-                ySize--;
-                Debug.Log("y-: " + ySize);
-            
+                yColliderSize--;
                 navMeshAgent.baseOffset--;
-                Debug.Log("navMesh-: " + navMeshAgent);
             }
             else { return; }
         }
