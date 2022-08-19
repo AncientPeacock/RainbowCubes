@@ -5,10 +5,9 @@ using UnityEngine.AI;
 
 public class StackerCube : MonoBehaviour
 {
-    Stack<GameObject> stack;
+    Stack<GameObject> stack; //LIFO
 
     NavMeshAgent navMeshAgent;
-    //ObstacleCubes obstacleCubes;
     GameObject popedCube;
     Vector3 obstacleSize;
 
@@ -28,7 +27,7 @@ public class StackerCube : MonoBehaviour
         zPos = transform.position.z;
     }
 
-    void OnTriggerEnter(Collider other) 
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "StackableCube")
         {
@@ -52,7 +51,7 @@ public class StackerCube : MonoBehaviour
             {
                 GetComponent<Movement>().enabled = false;
             }
-            //TODO: GAME OVER (OBSTACLE.LENGHT > STACK.COUNT)
+            //TODO: GAME OVER (OBSTACLE.LENGHT > STACK.COUNT and GAME OVER CANVAS)
         }
     }
 
@@ -65,7 +64,6 @@ public class StackerCube : MonoBehaviour
         yPos -= stack.Count;
         other.gameObject.transform.position = new Vector3(xPos, yPos, zPos);
 
-        other.gameObject.GetComponent<BoxCollider>().isTrigger = true; //otherwise the cube is stuck in the obstacle.
         other.gameObject.tag = "Untagged"; //otherwise the stuck mechanic (while stuck.Count > 3) breaks cause triggers interact eachother
     }
 
