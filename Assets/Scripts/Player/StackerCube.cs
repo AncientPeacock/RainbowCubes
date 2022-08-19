@@ -6,9 +6,11 @@ using UnityEngine.AI;
 public class StackerCube : MonoBehaviour
 {
     Stack<GameObject> stack;
+
     NavMeshAgent navMeshAgent;
-    ObstacleCubes obstacleCubes;
+    //ObstacleCubes obstacleCubes;
     GameObject popedCube;
+    Vector3 obstacleSize;
 
     float xPos, yPos, zPos;
 
@@ -23,7 +25,6 @@ public class StackerCube : MonoBehaviour
     {
         xPos = transform.position.x;
         yPos = transform.position.y;
-        Debug.Log("fixY: " + yPos);
         zPos = transform.position.z;
     }
 
@@ -37,12 +38,18 @@ public class StackerCube : MonoBehaviour
 
         else if (other.gameObject.tag == "ObstacleCube")
         {
-            if (stack.Count >= 1)
+            obstacleSize.y = other.gameObject.GetComponent<BoxCollider>().size.y;
+
+            if (obstacleSize.y <= stack.Count)
             {
-                PopedCube(other);
-                navMeshAgent.baseOffset--;
+                for (var i = 0; i < obstacleSize.y; i++)
+                {
+                    PopedCube(other);
+                    
+                    navMeshAgent.baseOffset--;
+                }
             }
-            else 
+            else if (obstacleSize.y > stack.Count)
             {
                 GetComponent<Movement>().enabled = false;
             }
@@ -56,9 +63,7 @@ public class StackerCube : MonoBehaviour
 
         other.gameObject.transform.parent = gameObject.transform; //SetParent is slightly slower
 
-        Debug.Log("ypos0: " + yPos);
         yPos = yPos - stack.Count;
-        Debug.Log("ypos: " + yPos + " " + stack.Count);
         other.gameObject.transform.position = new Vector3(xPos, yPos, zPos);
 
         other.gameObject.GetComponent<BoxCollider>().isTrigger = true; //otherwise the cube is stuck in the obstacle.

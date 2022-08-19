@@ -11,14 +11,15 @@ public class Movement : MonoBehaviour
     Rigidbody rb;
     NavMeshAgent navMeshAgent;
 
+    float xPos, yPos, zPos;
     float width;
-    float xPos;
-    float yPos = 0f;
-    float zPos = 1f;
 
     void Awake()
     {
         xPos = 0f;
+        yPos = 0f;
+        zPos = 1f;
+
         width = (float)Screen.width / 2f;
 
         rb = GetComponent<Rigidbody>();
