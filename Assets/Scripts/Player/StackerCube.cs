@@ -36,7 +36,7 @@ public class StackerCube : MonoBehaviour
             navMeshAgent.baseOffset++;
         }
 
-        else if (other.gameObject.tag == "ObstacleCube")
+        else if (other.gameObject.tag == "ObstacleCube" || other.gameObject.tag == "Stair")
         {
             obstacleSize.y = other.gameObject.GetComponent<BoxCollider>().size.y;
 
@@ -45,7 +45,6 @@ public class StackerCube : MonoBehaviour
                 for (var i = 0; i < obstacleSize.y; i++)
                 {
                     PopedCube(other);
-                    
                     navMeshAgent.baseOffset--;
                 }
             }
@@ -63,7 +62,7 @@ public class StackerCube : MonoBehaviour
 
         other.gameObject.transform.parent = gameObject.transform; //SetParent is slightly slower
 
-        yPos = yPos - stack.Count;
+        yPos -= stack.Count;
         other.gameObject.transform.position = new Vector3(xPos, yPos, zPos);
 
         other.gameObject.GetComponent<BoxCollider>().isTrigger = true; //otherwise the cube is stuck in the obstacle.

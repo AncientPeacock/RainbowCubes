@@ -6,6 +6,7 @@ TagManager:
   tags:
   - StackableCube
   - ObstacleCube
+  - Stair
   layers:
   - Default
   - TransparentFX
