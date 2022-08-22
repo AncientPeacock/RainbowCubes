@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2170928358128358387}
   - component: {fileID: 259898980939771844}
   - component: {fileID: 2279928078163507469}
-  - component: {fileID: 2259120276946401012}
   - component: {fileID: 1256977769}
   m_Layer: 0
   m_Name: Rainbow Cube
@@ -99,18 +98,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2259120276946401012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4695348317847906835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d15aa8bd5dcdb484c809340c25b52849, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1256977769
 BoxCollider:
   m_ObjectHideFlags: 0

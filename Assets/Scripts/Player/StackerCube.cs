@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class StackerCube : MonoBehaviour
 {
+    [SerializeField] Canvas gameOverCanvas;
+    [SerializeField] Canvas successCanvas;
+
     Stack<GameObject> stack; //LIFO
 
     NavMeshAgent navMeshAgent;
@@ -12,9 +15,13 @@ public class StackerCube : MonoBehaviour
     Vector3 obstacleSize;
 
     float xPos, yPos, zPos;
+    float delayInSeconds = .3f;
 
     void Start()
     {
+        gameOverCanvas.enabled = false;
+        successCanvas.enabled = false;
+
         stack = new Stack<GameObject>();
 
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -46,11 +53,18 @@ public class StackerCube : MonoBehaviour
                     PopedCube(other);
                 }
             }
-            else if (obstacleSize.y > stack.Count)
+            else if (other.gameObject.tag == "ObstacleCube" && obstacleSize.y > stack.Count)
             {
                 GetComponent<Movement>().enabled = false;
+                gameOverCanvas.enabled = true;
+                //FindObjectOfType<SceneLoader>().ReloadLevel(); it s not necessary, you already use button
             }
-            //TODO: GAME OVER (OBSTACLE.LENGHT > STACK.COUNT and GAME OVER CANVAS)
+            else if (other.gameObject.tag == "Stair" && stack.Count == 0)
+            {
+                GetComponent<Movement>().enabled = false;
+                successCanvas.enabled = true;
+                //FindObjectOfType<SceneLoader>().LoadNextLevel();
+            }
         }
     }
 
@@ -73,7 +87,7 @@ public class StackerCube : MonoBehaviour
 
         if (other.gameObject.tag == "ObstacleCube")
         {
-            Invoke("DelayPopedCube", .3f);    //the movement got worse with IEnumerator
+            Invoke("DelayPopedCube", delayInSeconds);    //the movement got worse with IEnumerator
         }
         else if (other.gameObject.tag == "Stair")
         {
