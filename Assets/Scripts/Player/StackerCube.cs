@@ -44,7 +44,6 @@ public class StackerCube : MonoBehaviour
                 for (var i = 0; i < obstacleSize.y; i++)
                 {
                     PopedCube(other);
-                    navMeshAgent.baseOffset--;
                 }
             }
             else if (obstacleSize.y > stack.Count)
@@ -70,9 +69,23 @@ public class StackerCube : MonoBehaviour
     void PopedCube(Collider other)
     {
         popedCube = stack.Pop();
-        popedCube.GetComponent<BoxCollider>().enabled = false;
         popedCube.transform.SetParent(null, true);
 
+        if (other.gameObject.tag == "ObstacleCube")
+        {
+            Invoke("DelayPopedCube", .3f);    //the movement got worse with IEnumerator
+        }
+        else if (other.gameObject.tag == "Stair")
+        {
+            return;
+        }
+
         other.gameObject.GetComponent<BoxCollider>().enabled = false;
+    }
+
+    void DelayPopedCube()
+    {
+        navMeshAgent.baseOffset--;
+        popedCube.GetComponent<BoxCollider>().enabled = false;
     }
 }

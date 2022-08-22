@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 3f;
+    [SerializeField] float moveSpeed = 3.5f;
 
     Touch touch;
     Rigidbody rb;
