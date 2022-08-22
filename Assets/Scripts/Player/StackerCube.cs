@@ -13,9 +13,10 @@ public class StackerCube : MonoBehaviour
     NavMeshAgent navMeshAgent;
     GameObject popedCube;
     Vector3 obstacleSize;
+    AudioSource audioSource;
 
     float xPos, yPos, zPos;
-    float delayInSeconds = .3f;
+    float delayInSeconds = .5f;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class StackerCube : MonoBehaviour
         stack = new Stack<GameObject>();
 
         navMeshAgent = GetComponent<NavMeshAgent>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate() //cube position is more stable with FixedUpdate()
@@ -70,6 +72,7 @@ public class StackerCube : MonoBehaviour
 
     void StackedCube(Collider other)
     {
+        audioSource.Play();
         stack.Push(other.gameObject);
 
         other.gameObject.transform.parent = gameObject.transform; //SetParent is slightly slower

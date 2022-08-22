@@ -24,6 +24,7 @@ public class Movement : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        rb.Sleep();
     }
 
     void Update()
