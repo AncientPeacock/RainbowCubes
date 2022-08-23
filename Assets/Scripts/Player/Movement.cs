@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
     [SerializeField] float moveSpeed = 3.5f;
 
     Touch touch;
-    Rigidbody rb;
+    //Rigidbody rb;
     NavMeshAgent navMeshAgent;
 
     float xPos, yPos, zPos;
@@ -22,9 +22,9 @@ public class Movement : MonoBehaviour
 
         width = (float)Screen.width / 2f;
 
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-        rb.Sleep();
+        //rb.Sleep();
     }
 
     void Update()
@@ -59,6 +59,8 @@ public class Movement : MonoBehaviour
     void PlayerMove()
     {
         Vector3 playerMove = new Vector3(xPos, yPos, zPos);
-        rb.MovePosition(transform.position + (playerMove * moveSpeed * Time.fixedDeltaTime));
+        //rb.MovePosition(transform.position + (playerMove * moveSpeed * Time.fixedDeltaTime));
+        transform.position = (transform.position + (playerMove * moveSpeed * Time.fixedDeltaTime)); //rb.MovePosition() slows movement as it collects cubes.
+        //FixedUpdate() is not necessary for transform.position and rigidbody physics with transform.position may not work well.
     }
 }

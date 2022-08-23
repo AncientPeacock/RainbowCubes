@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 3693cf8d36c01924f86b9e55e37b518e, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 84876808cdb2fff49b0a1c5865d247bd, type: 2}
 --- !u!4 &87410033 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1951272965809101694, guid: 9fd58da9f2aed614ba6a598c05233ebc, type: 3}
@@ -1484,6 +1484,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7105273108560198316, guid: d2a7bdb241b569346805e200d5469945, type: 3}
   m_PrefabInstance: {fileID: 1481506909}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2140869269 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6899546711182687296, guid: 375ba84bae5b0c8409beba8c3aef43e2, type: 3}
+  m_PrefabInstance: {fileID: 164125894014661878}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &52468955770278477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1621,6 +1626,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 885950713074082247, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
+      propertyPath: stair
+      value: 
+      objectReference: {fileID: 2140869269}
     - target: {fileID: 885950713074082247, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
       propertyPath: successCanvas
       value: 

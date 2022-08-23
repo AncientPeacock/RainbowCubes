@@ -345,6 +345,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 375ba84bae5b0c8409beba8c3aef43e2, type: 3}
+--- !u!1 &482518566 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6899546711182687296, guid: 375ba84bae5b0c8409beba8c3aef43e2, type: 3}
+  m_PrefabInstance: {fileID: 482518565}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &539254233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -538,6 +543,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 885950713074082247, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
+      propertyPath: stair
+      value: 
+      objectReference: {fileID: 482518566}
     - target: {fileID: 885950713074082247, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
       propertyPath: successCanvas
       value: 
