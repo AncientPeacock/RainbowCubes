@@ -27,6 +27,7 @@ public class StackerCube : MonoBehaviour
 
         navMeshAgent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
+        audioSource.Stop();
     }
 
     void FixedUpdate() //cube position is more stable with FixedUpdate()
