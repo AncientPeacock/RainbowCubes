@@ -1172,17 +1172,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1951272965809101694, guid: 9fd58da9f2aed614ba6a598c05233ebc, type: 3}
   m_PrefabInstance: {fileID: 1620621703}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1587573759 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2959993120419753160, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
-  m_PrefabInstance: {fileID: 1044327381321420824}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1620621703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1495,11 +1484,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7105273108560198316, guid: d2a7bdb241b569346805e200d5469945, type: 3}
   m_PrefabInstance: {fileID: 1481506909}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2140869269 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6899546711182687296, guid: 375ba84bae5b0c8409beba8c3aef43e2, type: 3}
-  m_PrefabInstance: {fileID: 164125894014661878}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &52468955770278477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1637,18 +1621,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 955157616, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
-      propertyPath: m_Constraints
-      value: 116
-      objectReference: {fileID: 0}
-    - target: {fileID: 885950713074082247, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
-      propertyPath: image
-      value: 
-      objectReference: {fileID: 1587573759}
-    - target: {fileID: 885950713074082247, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
-      propertyPath: stair
-      value: 
-      objectReference: {fileID: 2140869269}
     - target: {fileID: 885950713074082247, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
       propertyPath: successCanvas
       value: 
@@ -1657,29 +1629,9 @@ PrefabInstance:
       propertyPath: gameOverCanvas
       value: 
       objectReference: {fileID: 5299526224367138351}
-    - target: {fileID: 885950713074082247, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
-      propertyPath: emojis.Array.data[0]
-      value: 
-      objectReference: {fileID: 2800000, guid: 4710546f21f046b4a8d9623c97a823ad, type: 3}
-    - target: {fileID: 885950713074082247, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
-      propertyPath: emojis.Array.data[1]
-      value: 
-      objectReference: {fileID: 2800000, guid: b0b17f75164c30047badc17876569705, type: 3}
-    - target: {fileID: 885950713074082247, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
-      propertyPath: emojis.Array.data[2]
-      value: 
-      objectReference: {fileID: 2800000, guid: acbea18cf65df654693a7862dbdb0082, type: 3}
-    - target: {fileID: 885950713074082247, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
-      propertyPath: emojis.Array.data[3]
-      value: 
-      objectReference: {fileID: 2800000, guid: 8999715bf89198745853a51c15389122, type: 3}
     - target: {fileID: 2157577785754433343, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5544957771841418543, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6223240711099807637, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
       propertyPath: m_RootOrder

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using DG.Tweening;
-using UnityEngine.UI;
 
 public class StackerCube : MonoBehaviour
 {
     [SerializeField] Canvas gameOverCanvas;
     [SerializeField] Canvas successCanvas;
+    [SerializeField] GameObject[] emojis = new GameObject[4];
 
     Stack<GameObject> stack; //LIFO
 
@@ -19,14 +19,16 @@ public class StackerCube : MonoBehaviour
 
     Vector3 obstacleSize;
     Vector3 punchScale = new Vector3(.3f, .3f, .3f);
+    Vector3 emojiPos = new Vector3(-.5f, 4f, 0f);
 
     float xPos, yPos, zPos;
     float delayInSeconds = .5f;
     int vibrato = 10;
     float duration = 1f;
     float elasticity = 1f;
-
-    //bool isTouched;
+    float strenght = 90f;
+    float randomness = 90f;
+    float destroyEmoji = .8f;
 
     void Start()
     {
@@ -40,8 +42,6 @@ public class StackerCube : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
         audioSource.Stop();
-
-        //isTouched = false;
     }
 
     void FixedUpdate() //cube position is more stable with FixedUpdate()
@@ -88,30 +88,31 @@ public class StackerCube : MonoBehaviour
     void StackedCube(Collider other)
     {
         audioSource.Play();
+
         stack.Push(other.gameObject);
 
         other.gameObject.transform.parent = gameObject.transform; //SetParent is slightly slower
-
         yPos -= stack.Count;
-
-        punchScaleTween.Complete();
-		punchScaleTween = other.gameObject.transform.DOPunchScale(punchScale, duration, vibrato, elasticity);
-
         other.gameObject.transform.position = new Vector3(xPos, yPos, zPos);
-
         other.gameObject.tag = "Untagged"; //otherwise the stuck mechanic (while stuck.Count > 3) breaks cause triggers interact eachother
 
-        // isTouched = true;
-        // if (isTouched == true)
-        // {
-        //     SetNewColor();
-        // }
+        GetRandomEmoji();
+        PunchScaleCube(other);
     }
 
-    // void SetNewColor()
-    // {
+    void GetRandomEmoji()
+    {
+        int randomIndex = Random.Range(0, emojis.Length);
+        GameObject instantiatedEmoji = Instantiate(emojis[randomIndex], (transform.position + emojiPos), Quaternion.identity) as GameObject;
+        instantiatedEmoji.transform.DOShakeRotation(duration, strenght, vibrato, randomness, true);
+        Destroy(instantiatedEmoji, destroyEmoji);
+    }
 
-    // }
+    void PunchScaleCube(Collider other)
+    {
+        punchScaleTween.Complete();
+        punchScaleTween = other.gameObject.transform.DOPunchScale(punchScale, duration, vibrato, elasticity);
+    }
 
     void PopedCube(Collider other)
     {
