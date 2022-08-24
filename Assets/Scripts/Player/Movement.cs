@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using DG.Tweening;
 
 public class Movement : MonoBehaviour
 {
@@ -58,8 +59,7 @@ public class Movement : MonoBehaviour
     void PlayerMove()
     {
         Vector3 playerMove = new Vector3(xPos, yPos, zPos);
-        rb.MovePosition(rb.position + (playerMove * moveSpeed * Time.fixedDeltaTime)); //movement is better when continuous speculative and is kinematic enabled
-        //transform.position = (transform.position + (playerMove * moveSpeed * Time.fixedDeltaTime)); //rb.MovePosition() slows movement as it collects cubes.
-        //FixedUpdate() is not necessary for transform.position and rigidbody physics with transform.position may not work well.
+        playerMove = playerMove.normalized * moveSpeed * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + playerMove);    //movement is better when continuous speculative and is kinematic enabled
     }
 }

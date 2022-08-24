@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class StackerCube : MonoBehaviour
 {
@@ -12,14 +14,24 @@ public class StackerCube : MonoBehaviour
 
     NavMeshAgent navMeshAgent;
     GameObject popedCube;
-    Vector3 obstacleSize;
     AudioSource audioSource;
-    
+    Tween punchScaleTween;
+
+    Vector3 obstacleSize;
+    Vector3 punchScale = new Vector3(.3f, .3f, .3f);
+
     float xPos, yPos, zPos;
     float delayInSeconds = .5f;
+    int vibrato = 10;
+    float duration = 1f;
+    float elasticity = 1f;
+
+    //bool isTouched;
 
     void Start()
     {
+        DOTween.Init();
+
         gameOverCanvas.enabled = false;
         successCanvas.enabled = false;
 
@@ -28,6 +40,8 @@ public class StackerCube : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
         audioSource.Stop();
+
+        //isTouched = false;
     }
 
     void FixedUpdate() //cube position is more stable with FixedUpdate()
@@ -79,10 +93,25 @@ public class StackerCube : MonoBehaviour
         other.gameObject.transform.parent = gameObject.transform; //SetParent is slightly slower
 
         yPos -= stack.Count;
+
+        punchScaleTween.Complete();
+		punchScaleTween = other.gameObject.transform.DOPunchScale(punchScale, duration, vibrato, elasticity);
+
         other.gameObject.transform.position = new Vector3(xPos, yPos, zPos);
 
         other.gameObject.tag = "Untagged"; //otherwise the stuck mechanic (while stuck.Count > 3) breaks cause triggers interact eachother
+
+        // isTouched = true;
+        // if (isTouched == true)
+        // {
+        //     SetNewColor();
+        // }
     }
+
+    // void SetNewColor()
+    // {
+
+    // }
 
     void PopedCube(Collider other)
     {
