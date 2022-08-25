@@ -11,18 +11,22 @@ public class StackerCube : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] GameObject[] emojis = new GameObject[4];
     [SerializeField] GameObject floatingTextPrefab;
+    [SerializeField] GameObject ground;
 
     Stack<GameObject> stack; //LIFO
 
     NavMeshAgent navMeshAgent;
     GameObject popedCube;
+    GameObject stackedCube;
     AudioSource audioSource;
     Tween punchScaleTween;
+    Color cubeColor;
+    Renderer rend;
 
     Vector3 obstacleSize;
     Vector3 punchScale = new Vector3(.3f, .3f, .3f);
     Vector3 addPosEmoji = new Vector3(-.5f, 4f, 0f);
-    Vector3 addPosText = new Vector3(-.5f, 3f, 0f);
+    Vector3 addPosText = new Vector3(-.5f, 3f, .5f);
 
     float xPos, yPos, zPos;
     float delayInSeconds = .5f;
@@ -87,8 +91,6 @@ public class StackerCube : MonoBehaviour
                     successCanvas.enabled = true;
                     //FindObjectOfType<SceneLoader>().LoadNextLevel();
                 }
-                
-                
             }
         }
     }
@@ -97,15 +99,24 @@ public class StackerCube : MonoBehaviour
     {
         audioSource.Play();
 
-        stack.Push(other.gameObject);
+        stackedCube = other.gameObject;
+        stack.Push(stackedCube);
 
-        other.gameObject.transform.parent = gameObject.transform; //SetParent is slightly slower
+        stackedCube.transform.parent = gameObject.transform; //SetParent is slightly slower
         yPos -= stack.Count;
-        other.gameObject.transform.position = new Vector3(xPos, yPos, zPos);
-        other.gameObject.tag = "Untagged"; //otherwise the stuck mechanic (while stuck.Count > 3) breaks cause triggers interact eachother
+        stackedCube.transform.position = new Vector3(xPos, yPos, zPos);
+        stackedCube.tag = "Untagged"; //otherwise the stuck mechanic (while stuck.Count > 3) breaks cause triggers interact eachother
 
         GetRandomEmoji();
         PunchScaleCube(other);
+        SetGroundColor();
+    }
+
+    void SetGroundColor()
+    {
+        cubeColor = stackedCube.GetComponent<Renderer>().material.color;
+        rend = ground.GetComponent<Renderer>();
+        rend.material.color = cubeColor;
     }
 
     void GetRandomEmoji()
