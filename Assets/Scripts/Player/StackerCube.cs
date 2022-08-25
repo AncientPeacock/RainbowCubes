@@ -8,7 +8,9 @@ public class StackerCube : MonoBehaviour
 {
     [SerializeField] Canvas gameOverCanvas;
     [SerializeField] Canvas successCanvas;
+    [SerializeField] Transform target;
     [SerializeField] GameObject[] emojis = new GameObject[4];
+    [SerializeField] GameObject floatingTextPrefab;
 
     Stack<GameObject> stack; //LIFO
 
@@ -19,7 +21,8 @@ public class StackerCube : MonoBehaviour
 
     Vector3 obstacleSize;
     Vector3 punchScale = new Vector3(.3f, .3f, .3f);
-    Vector3 emojiPos = new Vector3(-.5f, 4f, 0f);
+    Vector3 addPosEmoji = new Vector3(-.5f, 4f, 0f);
+    Vector3 addPosText = new Vector3(-.5f, 3f, 0f);
 
     float xPos, yPos, zPos;
     float delayInSeconds = .5f;
@@ -28,7 +31,7 @@ public class StackerCube : MonoBehaviour
     float elasticity = 1f;
     float strenght = 90f;
     float randomness = 90f;
-    float destroyEmoji = .8f;
+    int currentNumb = 0;
 
     void Start()
     {
@@ -76,11 +79,16 @@ public class StackerCube : MonoBehaviour
                 gameOverCanvas.enabled = true;
                 //FindObjectOfType<SceneLoader>().ReloadLevel(); it s not necessary, you already use button
             }
-            else if (other.gameObject.tag == "Stair" && stack.Count == 0)
+            else if (other.gameObject.tag == "Stair")
             {
-                GetComponent<Movement>().enabled = false;
-                successCanvas.enabled = true;
-                //FindObjectOfType<SceneLoader>().LoadNextLevel();
+                if (stack.Count == 0)
+                {
+                    GetComponent<Movement>().enabled = false;
+                    successCanvas.enabled = true;
+                    //FindObjectOfType<SceneLoader>().LoadNextLevel();
+                }
+                
+                
             }
         }
     }
@@ -103,9 +111,9 @@ public class StackerCube : MonoBehaviour
     void GetRandomEmoji()
     {
         int randomIndex = Random.Range(0, emojis.Length);
-        GameObject instantiatedEmoji = Instantiate(emojis[randomIndex], (transform.position + emojiPos), Quaternion.identity) as GameObject;
-        instantiatedEmoji.transform.DOShakeRotation(duration, strenght, vibrato, randomness, true);
-        Destroy(instantiatedEmoji, destroyEmoji);
+        GameObject instantiatedEmoji = Instantiate(emojis[randomIndex], (transform.position + addPosEmoji), Quaternion.identity) as GameObject;
+        instantiatedEmoji.transform.LookAt(target);     //emoi must be look at the camera
+        instantiatedEmoji.transform.DOShakeRotation(duration, strenght, vibrato, randomness, true).OnComplete( () => { Destroy(instantiatedEmoji); } );
     }
 
     void PunchScaleCube(Collider other)
@@ -125,6 +133,8 @@ public class StackerCube : MonoBehaviour
         }
         else if (other.gameObject.tag == "Stair")
         {
+            currentNumb++;
+            ShowStairFloatingText("X" + (currentNumb.ToString()));
             return;
         }
 
@@ -135,5 +145,16 @@ public class StackerCube : MonoBehaviour
     {
         navMeshAgent.baseOffset--;
         popedCube.GetComponent<BoxCollider>().enabled = false;
+    }
+
+    void ShowStairFloatingText(string text)
+    {
+        if (floatingTextPrefab)
+        {
+            GameObject prefab = Instantiate(floatingTextPrefab, transform.position + addPosText, Quaternion.identity);
+            prefab.GetComponent<TextMesh>().text = text;
+            prefab.transform.DOShakeRotation(duration, strenght, vibrato, randomness, true).OnComplete( () => { Destroy(prefab); } );
+            //prefab.transform.DOMove(transform.position + addPosText, duration, true).OnComplete( () => { Destroy(prefab); } );
+        }
     }
 }

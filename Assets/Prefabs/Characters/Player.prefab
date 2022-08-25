@@ -66,11 +66,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverCanvas: {fileID: 0}
   successCanvas: {fileID: 0}
+  target: {fileID: 0}
   emojis:
   - {fileID: 6324108882909769196, guid: 1c6dd3a1d739bfa49aaf92e8211caf6b, type: 3}
   - {fileID: 910585169067121888, guid: bd685e547f238a0429b7ec9b77245a3e, type: 3}
   - {fileID: 8133546083827188567, guid: 0680cfe199a638b4b97c160084715a0c, type: 3}
   - {fileID: 6256402138560862562, guid: bbcc5f5afec8d6946aa0808ee1e57330, type: 3}
+  floatingTextPrefab: {fileID: 4382672458756589670, guid: 37b62759c4abdd74c9486996aacf7750, type: 3}
 --- !u!54 &955157616
 Rigidbody:
   m_ObjectHideFlags: 0
