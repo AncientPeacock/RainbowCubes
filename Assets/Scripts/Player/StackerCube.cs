@@ -11,7 +11,7 @@ public class StackerCube : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] GameObject[] emojis = new GameObject[4];
     [SerializeField] GameObject floatingTextPrefab;
-    [SerializeField] GameObject ground;
+    //[SerializeField] GameObject ground;
 
     Stack<GameObject> stack; //LIFO
 
@@ -22,11 +22,13 @@ public class StackerCube : MonoBehaviour
     Tween punchScaleTween;
     Color cubeColor;
     Renderer rend;
+    TrailRenderer trail;
 
     Vector3 obstacleSize;
     Vector3 punchScale = new Vector3(.3f, .3f, .3f);
     Vector3 addPosEmoji = new Vector3(-.5f, 4f, 0f);
     Vector3 addPosText = new Vector3(-.5f, 3f, .5f);
+    Vector3 trailPos = new Vector3(0f, -.5f,0f);
 
     float xPos, yPos, zPos;
     float delayInSeconds = .5f;
@@ -49,13 +51,9 @@ public class StackerCube : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         audioSource = GetComponent<AudioSource>();
         audioSource.Stop();
-    }
 
-    void FixedUpdate() //cube position is more stable with FixedUpdate()
-    {
-        xPos = transform.position.x;
-        yPos = transform.position.y;
-        zPos = transform.position.z;
+        trail = FindObjectOfType<TrailRenderer>();
+        trail.enabled = false;
     }
 
     void OnTriggerEnter(Collider other)
@@ -102,21 +100,32 @@ public class StackerCube : MonoBehaviour
         stackedCube = other.gameObject;
         stack.Push(stackedCube);
 
-        stackedCube.transform.parent = gameObject.transform; //SetParent is slightly slower
-        yPos -= stack.Count;
+        SetPosition();
         stackedCube.transform.position = new Vector3(xPos, yPos, zPos);
+        stackedCube.transform.parent = gameObject.transform; //SetParent is slightly slower
+
         stackedCube.tag = "Untagged"; //otherwise the stuck mechanic (while stuck.Count > 3) breaks cause triggers interact eachother
 
         GetRandomEmoji();
         PunchScaleCube(other);
-        SetGroundColor();
+        SetTrailColor();
+        //SetGroundColor();
     }
 
-    void SetGroundColor()
+    void SetTrailColor()
     {
+        trail.enabled = true;
+        rend = trail.GetComponent<Renderer>();
         cubeColor = stackedCube.GetComponent<Renderer>().material.color;
-        rend = ground.GetComponent<Renderer>();
         rend.material.color = cubeColor;
+    }
+
+    void SetPosition()
+    {
+        xPos = transform.position.x;
+        yPos = transform.position.y;
+        zPos = transform.position.z;
+        yPos -= stack.Count;
     }
 
     void GetRandomEmoji()
@@ -141,6 +150,11 @@ public class StackerCube : MonoBehaviour
         if (other.gameObject.tag == "ObstacleCube")
         {
             Invoke("DelayPopedCube", delayInSeconds);    //the movement got worse with IEnumerator
+
+            if (stack.Count == 0)
+            {
+            trail.enabled = false;
+            }
         }
         else if (other.gameObject.tag == "Stair")
         {
@@ -168,4 +182,12 @@ public class StackerCube : MonoBehaviour
             //prefab.transform.DOMove(transform.position + addPosText, duration, true).OnComplete( () => { Destroy(prefab); } );
         }
     }
+
+    // void SetGroundColor()
+    // {
+    //     //When the cube is stacked, the color of the ground is changed to the color of the cube.
+    //     cubeColor = stackedCube.GetComponent<Renderer>().material.color;
+    //     rend = ground.GetComponent<Renderer>();
+    //     rend.material.color = cubeColor;
+    // }
 }
