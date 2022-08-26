@@ -93,7 +93,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6552435377298884314}
   - component: {fileID: 3437775009470473276}
-  - component: {fileID: 6931899297697392811}
   m_Layer: 0
   m_Name: Stair7
   m_TagString: Stair
@@ -110,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 7894763839285309162}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.3, y: -10.25, z: 57.75}
-  m_LocalScale: {x: 5, y: 1, z: 2.5}
+  m_LocalScale: {x: 5, y: 1, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3939267737208278361}
@@ -126,19 +125,6 @@ BoxCollider:
   m_GameObject: {fileID: 7894763839285309162}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &6931899297697392811
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7894763839285309162}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}

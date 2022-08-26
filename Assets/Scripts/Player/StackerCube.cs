@@ -26,8 +26,8 @@ public class StackerCube : MonoBehaviour
 
     Vector3 obstacleSize;
     Vector3 punchScale = new Vector3(.3f, .3f, .3f);
-    Vector3 addPosEmoji = new Vector3(-.5f, 4f, 0f);
-    Vector3 addPosText = new Vector3(-.5f, 3f, .5f);
+    Vector3 addPosEmoji = new Vector3(-1f, 6f, 0f);
+    Vector3 addPosText = new Vector3(-1f, 5f, .5f);
     Vector3 trailPos = new Vector3(0f, -.5f,0f);
 
     float xPos, yPos, zPos;
@@ -126,6 +126,7 @@ public class StackerCube : MonoBehaviour
         yPos = transform.position.y;
         zPos = transform.position.z;
         yPos -= stack.Count;
+
     }
 
     void GetRandomEmoji()
@@ -160,7 +161,7 @@ public class StackerCube : MonoBehaviour
         {
             currentNumb++;
             ShowStairFloatingText("X" + (currentNumb.ToString()));
-            return;
+            //return;
         }
 
         other.gameObject.GetComponent<BoxCollider>().enabled = false;
