@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 955157618}
   - component: {fileID: 8438942705834734624}
   - component: {fileID: 760379375}
+  - component: {fileID: 955157615}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -144,7 +145,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.7019067
+  MinDistance: 0.37753132
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -220,6 +221,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &955157615
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2157577785754433343}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7901de2deaa36e54e86efbdac1dfa382, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8624472310421751129
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,11 +349,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0815fd38b69fd0a4aabed1fbb9a9ba28, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0815fd38b69fd0a4aabed1fbb9a9ba28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0815fd38b69fd0a4aabed1fbb9a9ba28, type: 3}
       propertyPath: m_LocalPosition.z
@@ -370,6 +391,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ragdoll
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 0815fd38b69fd0a4aabed1fbb9a9ba28, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7901de2deaa36e54e86efbdac1dfa382, type: 2}
     - target: {fileID: 8129263174399075947, guid: 0815fd38b69fd0a4aabed1fbb9a9ba28, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
