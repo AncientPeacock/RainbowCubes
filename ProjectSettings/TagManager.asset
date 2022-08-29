@@ -7,6 +7,10 @@ TagManager:
   - StackableCube
   - ObstacleCube
   - Stair
+  - LeftStackableCube
+  - RightStackableCube
+  - LeftChild
+  - RightChild
   layers:
   - Default
   - TransparentFX
