@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.3556426, g: 0.46351022, b: 0.6792453, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 733f695b2e0b8a74b9da2e6b6a768a2b, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.46347487, g: 0.7806161, b: 0.69588244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -221,6 +221,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rainbow Cube (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8301897759993140328, guid: 9fd58da9f2aed614ba6a598c05233ebc, type: 3}
+      propertyPath: m_TagString
+      value: RightStackableCube
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fd58da9f2aed614ba6a598c05233ebc, type: 3}
 --- !u!4 &232772922 stripped
@@ -290,11 +294,67 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6899546711182687296, guid: 375ba84bae5b0c8409beba8c3aef43e2, type: 3}
   m_PrefabInstance: {fileID: 482518565}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &515559913 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2157577785754433343, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
-  m_PrefabInstance: {fileID: 760379368}
-  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &553705397
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7686466311936992524, guid: 64054266e7e4c9f48b6a3d55984fa6d7, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686466311936992524, guid: 64054266e7e4c9f48b6a3d55984fa6d7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686466311936992524, guid: 64054266e7e4c9f48b6a3d55984fa6d7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686466311936992524, guid: 64054266e7e4c9f48b6a3d55984fa6d7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686466311936992524, guid: 64054266e7e4c9f48b6a3d55984fa6d7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686466311936992524, guid: 64054266e7e4c9f48b6a3d55984fa6d7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686466311936992524, guid: 64054266e7e4c9f48b6a3d55984fa6d7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686466311936992524, guid: 64054266e7e4c9f48b6a3d55984fa6d7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686466311936992524, guid: 64054266e7e4c9f48b6a3d55984fa6d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686466311936992524, guid: 64054266e7e4c9f48b6a3d55984fa6d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686466311936992524, guid: 64054266e7e4c9f48b6a3d55984fa6d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7686466311936992525, guid: 64054266e7e4c9f48b6a3d55984fa6d7, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2013174720}
+    - target: {fileID: 7686466311936992527, guid: 64054266e7e4c9f48b6a3d55984fa6d7, type: 3}
+      propertyPath: m_Name
+      value: TrailRendererRight
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 64054266e7e4c9f48b6a3d55984fa6d7, type: 3}
 --- !u!1001 &631082517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -305,6 +365,10 @@ PrefabInstance:
     - target: {fileID: 3614918176308384834, guid: 9c3c4d2f63d2f2a4f977909b4ad81313, type: 3}
       propertyPath: m_Name
       value: Rainbow Cube (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614918176308384834, guid: 9c3c4d2f63d2f2a4f977909b4ad81313, type: 3}
+      propertyPath: m_TagString
+      value: RightStackableCube
       objectReference: {fileID: 0}
     - target: {fileID: 6487664537945873236, guid: 9c3c4d2f63d2f2a4f977909b4ad81313, type: 3}
       propertyPath: m_RootOrder
@@ -411,6 +475,10 @@ PrefabInstance:
     - target: {fileID: 4695348317847906835, guid: cf5f637e707c1c64299a8f42409bbf20, type: 3}
       propertyPath: m_Name
       value: Rainbow Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695348317847906835, guid: cf5f637e707c1c64299a8f42409bbf20, type: 3}
+      propertyPath: m_TagString
+      value: RightStackableCube
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf5f637e707c1c64299a8f42409bbf20, type: 3}
@@ -792,6 +860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rainbow Cube (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 772671164815439290, guid: d2a7bdb241b569346805e200d5469945, type: 3}
+      propertyPath: m_TagString
+      value: LeftStackableCube
+      objectReference: {fileID: 0}
     - target: {fileID: 7105273108560198316, guid: d2a7bdb241b569346805e200d5469945, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1113,6 +1185,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rainbow Cube (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 772671164815439290, guid: d2a7bdb241b569346805e200d5469945, type: 3}
+      propertyPath: m_TagString
+      value: LeftStackableCube
+      objectReference: {fileID: 0}
     - target: {fileID: 7105273108560198316, guid: d2a7bdb241b569346805e200d5469945, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1164,6 +1240,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7105273108560198316, guid: d2a7bdb241b569346805e200d5469945, type: 3}
   m_PrefabInstance: {fileID: 1157304241}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1161439301
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3840067214618518655, guid: 07eae63d4333bbe41915919d81dd1ed1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1344540669}
+    - target: {fileID: 7501914028738640105, guid: 07eae63d4333bbe41915919d81dd1ed1, type: 3}
+      propertyPath: m_Name
+      value: TrailRendererLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501914028738640108, guid: 07eae63d4333bbe41915919d81dd1ed1, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501914028738640108, guid: 07eae63d4333bbe41915919d81dd1ed1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501914028738640108, guid: 07eae63d4333bbe41915919d81dd1ed1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501914028738640108, guid: 07eae63d4333bbe41915919d81dd1ed1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501914028738640108, guid: 07eae63d4333bbe41915919d81dd1ed1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501914028738640108, guid: 07eae63d4333bbe41915919d81dd1ed1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501914028738640108, guid: 07eae63d4333bbe41915919d81dd1ed1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501914028738640108, guid: 07eae63d4333bbe41915919d81dd1ed1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501914028738640108, guid: 07eae63d4333bbe41915919d81dd1ed1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501914028738640108, guid: 07eae63d4333bbe41915919d81dd1ed1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501914028738640108, guid: 07eae63d4333bbe41915919d81dd1ed1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 07eae63d4333bbe41915919d81dd1ed1, type: 3}
 --- !u!1 &1289528204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,6 +1372,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 23.928, y: -10.934, z: 0}
+--- !u!1 &1344540669 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8624472310421751129, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
+  m_PrefabInstance: {fileID: 760379368}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1475128659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1459,6 +1601,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rainbow Cube (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5714872927277868208, guid: 29d3515fb40fe2a49bbeaf2914928e94, type: 3}
+      propertyPath: m_TagString
+      value: LeftStackableCube
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29d3515fb40fe2a49bbeaf2914928e94, type: 3}
 --- !u!4 &1528479837 stripped
@@ -1637,6 +1783,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rainbow Cube (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4695348317847906835, guid: cf5f637e707c1c64299a8f42409bbf20, type: 3}
+      propertyPath: m_TagString
+      value: RightStackableCube
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf5f637e707c1c64299a8f42409bbf20, type: 3}
 --- !u!4 &1687066996 stripped
@@ -1698,6 +1848,10 @@ PrefabInstance:
     - target: {fileID: 8301897759993140328, guid: 9fd58da9f2aed614ba6a598c05233ebc, type: 3}
       propertyPath: m_Name
       value: Rainbow Cube (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301897759993140328, guid: 9fd58da9f2aed614ba6a598c05233ebc, type: 3}
+      propertyPath: m_TagString
+      value: RightStackableCube
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fd58da9f2aed614ba6a598c05233ebc, type: 3}
@@ -1768,67 +1922,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2996323602961415569, guid: ee3f72104a4a67844886d9c72694356e, type: 3}
   m_PrefabInstance: {fileID: 1967152088}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &2023039836
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6566298205934526370, guid: 17bd63e61ed5a5b4ab92376042b07d36, type: 3}
-      propertyPath: m_Name
-      value: TrailRenderer
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566298205934526372, guid: 17bd63e61ed5a5b4ab92376042b07d36, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 515559913}
-    - target: {fileID: 6566298205934526375, guid: 17bd63e61ed5a5b4ab92376042b07d36, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566298205934526375, guid: 17bd63e61ed5a5b4ab92376042b07d36, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566298205934526375, guid: 17bd63e61ed5a5b4ab92376042b07d36, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566298205934526375, guid: 17bd63e61ed5a5b4ab92376042b07d36, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.628
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566298205934526375, guid: 17bd63e61ed5a5b4ab92376042b07d36, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566298205934526375, guid: 17bd63e61ed5a5b4ab92376042b07d36, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566298205934526375, guid: 17bd63e61ed5a5b4ab92376042b07d36, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566298205934526375, guid: 17bd63e61ed5a5b4ab92376042b07d36, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566298205934526375, guid: 17bd63e61ed5a5b4ab92376042b07d36, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566298205934526375, guid: 17bd63e61ed5a5b4ab92376042b07d36, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6566298205934526375, guid: 17bd63e61ed5a5b4ab92376042b07d36, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 17bd63e61ed5a5b4ab92376042b07d36, type: 3}
+--- !u!1 &2013174720 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3848657208795685155, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
+  m_PrefabInstance: {fileID: 760379368}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2097006159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1923,6 +2021,10 @@ PrefabInstance:
     - target: {fileID: 5714872927277868208, guid: 29d3515fb40fe2a49bbeaf2914928e94, type: 3}
       propertyPath: m_Name
       value: Rainbow Cube (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714872927277868208, guid: 29d3515fb40fe2a49bbeaf2914928e94, type: 3}
+      propertyPath: m_TagString
+      value: LeftStackableCube
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29d3515fb40fe2a49bbeaf2914928e94, type: 3}

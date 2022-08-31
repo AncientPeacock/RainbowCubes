@@ -11,6 +11,8 @@ TagManager:
   - RightStackableCube
   - LeftChild
   - RightChild
+  - TrailLeft
+  - TrailRight
   layers:
   - Default
   - TransparentFX

@@ -16,16 +16,20 @@ public class StackerCube : MonoBehaviour
     Stack<GameObject> stack1; //LIFO
     Stack<GameObject> stack2;
 
+    NavMeshAgent navMesh;
     NavMeshAgent leftNavMesh;
     NavMeshAgent rightNavMesh;
-    NavMeshAgent navMesh;
-    GameObject popedCube;
+    GameObject popedCube1;
+    GameObject popedCube2;
     GameObject stackedCube;
     AudioSource audioSource;
     Tween punchScaleTween;
     Color cubeColor;
     Renderer rend;
-    TrailRenderer trail;
+    GameObject leftTrail;
+    GameObject rightTrail;
+    TrailRenderer trailLeft;
+    TrailRenderer trailRight;
     Transform leftChild;
     Transform rightChild;
 
@@ -43,6 +47,7 @@ public class StackerCube : MonoBehaviour
     float strenght = 90f;
     float randomness = 90f;
     int currentNumb = 0;
+    float yTrail = -.4f;
 
     void Start()
     {
@@ -57,18 +62,19 @@ public class StackerCube : MonoBehaviour
         leftChild = GameObject.FindWithTag("LeftChild").GetComponent<Transform>();
         rightChild = GameObject.FindWithTag("RightChild").GetComponent<Transform>();
 
-        //navMeshAgent = GetComponent<NavMeshAgent>();
+        navMesh = GetComponent<NavMeshAgent>();
         leftNavMesh = leftChild.GetComponent<NavMeshAgent>();
         rightNavMesh = rightChild.GetComponent<NavMeshAgent>();
-        navMesh = GetComponent<NavMeshAgent>();
 
         audioSource = GetComponent<AudioSource>();
         audioSource.Stop();
 
-        trail = FindObjectOfType<TrailRenderer>();
-        trail.enabled = false;
-
-        
+        leftTrail = GameObject.FindWithTag("TrailLeft");
+        trailLeft = leftTrail.GetComponent<TrailRenderer>();
+        trailLeft.enabled = false;
+        rightTrail = GameObject.FindWithTag("TrailRight");
+        trailRight = rightTrail.GetComponent<TrailRenderer>();
+        trailRight.enabled = false;
     }
 
     void OnTriggerEnter(Collider other)
@@ -120,18 +126,25 @@ public class StackerCube : MonoBehaviour
         {
             obstacleSize.y = other.gameObject.GetComponent<BoxCollider>().size.y;
 
-            if (obstacleSize.y <= stack1.Count || obstacleSize.y <= stack2.Count)
+            if (obstacleSize.y <= stack1.Count && obstacleSize.y <= stack2.Count)
             {
-                for (var i = 0; i < obstacleSize.y; i++)
+                if (stack1.Count > 0 && stack2.Count > 0)
                 {
-                    PopedCube(other);
+                    for (var i = 0; i < obstacleSize.y; i++)
+                    {
+                        PopedCube(other);
+                    }
                 }
+                else { return; }
             }
-            else if (other.gameObject.tag == "ObstacleCube" && (obstacleSize.y > stack1.Count || obstacleSize.y > stack2.Count))
+            else if (other.gameObject.tag == "ObstacleCube")
             {
-                GetComponent<Movement>().enabled = false;
-                gameOverCanvas.enabled = true;
-                //FindObjectOfType<SceneLoader>().ReloadLevel(); it s not necessary, you already use button
+                if (obstacleSize.y > stack1.Count || obstacleSize.y > stack2.Count)
+                {
+                    GetComponent<Movement>().enabled = false;
+                    gameOverCanvas.enabled = true;
+                    //FindObjectOfType<SceneLoader>().ReloadLevel(); it s not necessary, you already use button
+                }
             }
             else if (other.gameObject.tag == "Stair")
             {
@@ -158,8 +171,6 @@ public class StackerCube : MonoBehaviour
 
         stackedCube = other.gameObject;
 
-        
-
         if (other.gameObject.tag == "LeftStackableCube")
         {
             stack1.Push(stackedCube);
@@ -170,7 +181,7 @@ public class StackerCube : MonoBehaviour
             stackedCube.tag = "Untagged"; //otherwise the stuck mechanic (while stuck.Count > 3) breaks cause triggers interact eachother
             GetRandomEmoji();
             PunchScaleCube(other);
-            SetTrailColor();
+            SetTrailColorLeft();
             if (leftNavMesh.baseOffset <= stack1.Count + .5f)
             {
                 leftNavMesh.baseOffset++;
@@ -199,13 +210,13 @@ public class StackerCube : MonoBehaviour
             stackedCube.tag = "Untagged"; //otherwise the stuck mechanic (while stuck.Count > 3) breaks cause triggers interact eachother
             GetRandomEmoji();
             PunchScaleCube(other);
-            SetTrailColor();
+            SetTrailColorRight();
             
-            if (rightNavMesh.baseOffset <= (float)(stack2.Count + .5f))
+            if (rightNavMesh.baseOffset <= stack2.Count + .5f)
             {
                 rightNavMesh.baseOffset++;
             }
-            else if (rightNavMesh.baseOffset > (float)(stack2.Count + .5f))
+            else if (rightNavMesh.baseOffset > stack2.Count + .5f)
             {
                 return;
             }
@@ -221,17 +232,6 @@ public class StackerCube : MonoBehaviour
         }
 
         SetNavMeshBaseOffset();
-
-        //SetPosition();
-        //stackedCube.transform.position = new Vector3(xPos, yPos, zPos);
-        //stackedCube.transform.parent = gameObject.transform; //SetParent is slightly slower
-
-        //stackedCube.tag = "Untagged"; //otherwise the stuck mechanic (while stuck.Count > 3) breaks cause triggers interact eachother
-
-        // GetRandomEmoji();
-        // PunchScaleCube(other);
-        // SetTrailColor();
-        //SetGroundColor();
     }
 
     void SetNavMeshBaseOffset()
@@ -239,7 +239,7 @@ public class StackerCube : MonoBehaviour
         if (leftNavMesh.baseOffset > rightNavMesh.baseOffset)
         {
             navMesh.baseOffset = leftNavMesh.baseOffset;
-            rightNavMesh.baseOffset = navMesh.baseOffset; //otherwise the right cubes stay on the ground
+            //rightNavMesh.baseOffset = navMesh.baseOffset; //otherwise the right cubes stay on the ground
             // if (leftNavMesh.baseOffset > stack1.Count + .5f)
             // {
             //     return;
@@ -248,7 +248,7 @@ public class StackerCube : MonoBehaviour
         else if (rightNavMesh.baseOffset > leftNavMesh.baseOffset)
         {
             navMesh.baseOffset = rightNavMesh.baseOffset;
-            leftNavMesh.baseOffset = navMesh.baseOffset; //cs:242 and cs:251 are ridiculous when they work together !!!
+            //leftNavMesh.baseOffset = navMesh.baseOffset; //cs:242 and cs:251 are ridiculous when they work together !!!
             // if (rightNavMesh.baseOffset > stack2.Count + .5f)
             // {
             //     return;
@@ -260,38 +260,43 @@ public class StackerCube : MonoBehaviour
         }
     }
 
-    void SetPositionRight()
-    {
-        xPos = rightChild.transform.position.x;
-        yPos = rightChild.transform.position.y;
-        zPos = rightChild.transform.position.z;
-        yPos -= stack2.Count;
-    }
-
-    void SetPositionLeft()
+    public void SetPositionLeft()
     {
         xPos = leftChild.transform.position.x;
         yPos = leftChild.transform.position.y;
         zPos = leftChild.transform.position.z;
         yPos -= stack1.Count;
+
+        leftTrail.transform.position = new Vector3(xPos, yTrail, zPos);
     }
 
-    void SetTrailColor()
+    public void SetPositionRight()
     {
-        trail.enabled = true;
-        rend = trail.GetComponent<Renderer>();
+        xPos = rightChild.transform.position.x;
+        yPos = rightChild.transform.position.y;
+        zPos = rightChild.transform.position.z;
+        yPos -= stack2.Count;
+
+        rightTrail.transform.position = new Vector3(xPos, yTrail, zPos);
+    }
+
+    void SetTrailColorLeft()
+    {
+        
+        trailLeft.enabled = true;
+        rend = trailLeft.GetComponent<Renderer>();
         cubeColor = stackedCube.GetComponent<Renderer>().material.color;
         rend.material.color = cubeColor;
     }
 
-    // void SetPosition()
-    // {
-    //     xPos = transform.position.x;
-    //     yPos = transform.position.y;
-    //     zPos = transform.position.z;
-    //     yPos -= stack.Count;
-
-    // }
+    void SetTrailColorRight()
+    {
+        
+        trailRight.enabled = true;
+        rend = trailRight.GetComponent<Renderer>();
+        cubeColor = stackedCube.GetComponent<Renderer>().material.color;
+        rend.material.color = cubeColor;
+    }
 
     void GetRandomEmoji()
     {
@@ -309,43 +314,75 @@ public class StackerCube : MonoBehaviour
 
     void PopedCube(Collider other)
     {
-        if (other.gameObject.tag == "LeftStackableCube")
-        {
-            popedCube = stack1.Pop();
-            popedCube.transform.SetParent(null, true);
-        }
-
-        else if (other.gameObject.tag == "RightStackableCube")
-        {
-            popedCube = stack2.Pop();
-            popedCube.transform.SetParent(null, true);
-        }
-
-        popedCube.transform.SetParent(null, true);
+        popedCube1 = stack1.Pop();
+        popedCube1.transform.SetParent(null, true);
+        popedCube2 = stack2.Pop();
+        popedCube2.transform.SetParent(null, true);
 
         if (other.gameObject.tag == "ObstacleCube")
         {
             Invoke("DelayPopedCube", delayInSeconds);    //the movement got worse with IEnumerator
 
-            if (stack1.Count == 0 || stack2.Count == 0)
-            {
-            trail.enabled = false;
-            }
+            // if (stack1.Count == 0 || stack2.Count == 0)
+            // {
+            //     trailLeft.enabled = false;
+            //     trailRight.enabled = false;
+            // }
         }
+        // if (other.gameObject.tag == "LeftStackableCube")
+        // {
+        //     popedCube1 = stack1.Pop();
+        //     popedCube1.transform.SetParent(null, true);
+        // }
+        // else if (other.gameObject.tag == "RightStackableCube")
+        // {
+        //     popedCube2 = stack2.Pop();
+        //     popedCube2.transform.SetParent(null, true);
+        // }
+
         else if (other.gameObject.tag == "Stair")
         {
-            currentNumb++;
+            currentNumb += 2;
             ShowStairFloatingText("X" + (currentNumb.ToString()));
-            //return;
         }
 
         other.gameObject.GetComponent<BoxCollider>().enabled = false;
+
+        // else if (stack1.Count == 0 || stack2.Count == 0)
+        // {
+        //     trailLeft.enabled = false;
+        //     trailRight.enabled = false;
+        //     return;
+        // }
+
+        // if (other.gameObject.tag == "ObstacleCube")
+        // {
+        //     Invoke("DelayPopedCube", delayInSeconds);    //the movement got worse with IEnumerator
+
+        //     if (stack1.Count == 0 || stack2.Count == 0)
+        //     {
+        //     trailLeft.enabled = false;
+        //     trailRight.enabled = false;
+        //     }
+        // }
+        // else if (other.gameObject.tag == "Stair")
+        // {
+        //     currentNumb++;
+        //     ShowStairFloatingText("X" + (currentNumb.ToString()));
+        //     //return;
+        // }
+
+        // other.gameObject.GetComponent<BoxCollider>().enabled = false;
     }
 
     void DelayPopedCube()
     {
-        //navMeshAgent.baseOffset--;
-        popedCube.GetComponent<BoxCollider>().enabled = false;
+        navMesh.baseOffset--;
+        leftNavMesh.baseOffset--;
+        rightNavMesh.baseOffset--;
+
+        popedCube1.GetComponent<BoxCollider>().enabled = false;
+        popedCube2.GetComponent<BoxCollider>().enabled = false;
     }
 
     void ShowStairFloatingText(string text)
@@ -358,12 +395,4 @@ public class StackerCube : MonoBehaviour
             //prefab.transform.DOMove(transform.position + addPosText, duration, true).OnComplete( () => { Destroy(prefab); } );
         }
     }
-
-    // void SetGroundColor()
-    // {
-    //     //When the cube is stacked, the color of the ground is changed to the color of the cube.
-    //     cubeColor = stackedCube.GetComponent<Renderer>().material.color;
-    //     rend = ground.GetComponent<Renderer>();
-    //     rend.material.color = cubeColor;
-    // }
 }

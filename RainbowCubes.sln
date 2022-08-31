@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToonyColorsPro2.Demo", "ToonyColorsPro2.Demo.csproj", "{c22a5bdf-cefc-cd2e-dd6a-bd4fbcd90e86}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{5af7bbae-7602-09c7-cb19-901b6023ff3b}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToonyColorsPro2.Demo", "ToonyColorsPro2.Demo.csproj", "{c22a5bdf-cefc-cd2e-dd6a-bd4fbcd90e86}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToonyColorsPro.Runtime", "ToonyColorsPro.Runtime.csproj", "{a9f56984-b4cc-5720-36f5-bf4ffbf08c5e}"
 EndProject
@@ -20,10 +20,10 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{c22a5bdf-cefc-cd2e-dd6a-bd4fbcd90e86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{c22a5bdf-cefc-cd2e-dd6a-bd4fbcd90e86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5af7bbae-7602-09c7-cb19-901b6023ff3b}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5af7bbae-7602-09c7-cb19-901b6023ff3b}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{c22a5bdf-cefc-cd2e-dd6a-bd4fbcd90e86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{c22a5bdf-cefc-cd2e-dd6a-bd4fbcd90e86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{a9f56984-b4cc-5720-36f5-bf4ffbf08c5e}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{a9f56984-b4cc-5720-36f5-bf4ffbf08c5e}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{583c74a6-ea89-e852-c713-e10c0fe3c36f}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

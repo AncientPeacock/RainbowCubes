@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d1eabd82db0d04c9c3151b5a3589f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3.5
+  moveSpeed: 5
 --- !u!114 &885950713074082247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +100,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2157577785754433343}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.2
+  m_Radius: 0.14
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -146,7 +146,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1.3332137
+  MinDistance: 1.2313385
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -253,8 +253,9 @@ GameObject:
   - component: {fileID: 4271150471518616942}
   - component: {fileID: 1253238811645024121}
   - component: {fileID: 2340839906286124178}
+  - component: {fileID: 1635224902}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Right Cube
   m_TagString: RightChild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,6 +326,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!195 &1635224902
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3848657208795685155}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 10
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8624472310421751129
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,8 +359,9 @@ GameObject:
   - component: {fileID: 622122738910724363}
   - component: {fileID: 5660082475766790336}
   - component: {fileID: 7930803673149957368}
+  - component: {fileID: 182510916}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Left Cube
   m_TagString: LeftChild
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -408,6 +432,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!195 &182510916
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8624472310421751129}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 10
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &2363333556944611346
 PrefabInstance:
   m_ObjectHideFlags: 0
