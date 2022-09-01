@@ -11,7 +11,6 @@ public class StackerCube : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] GameObject[] emojis = new GameObject[4];
     [SerializeField] GameObject floatingTextPrefab;
-    //[SerializeField] GameObject ground;
 
     Stack<GameObject> stack1; //LIFO
     Stack<GameObject> stack2;
@@ -82,44 +81,6 @@ public class StackerCube : MonoBehaviour
         if (other.gameObject.tag == "LeftStackableCube" || other.gameObject.tag == "RightStackableCube")
         {
             StackedCube(other);
-            // if (leftNavMesh.baseOffset > rightNavMesh.baseOffset)
-            // {
-            //     navMesh.baseOffset = leftNavMesh.baseOffset;
-            //     rightNavMesh.baseOffset = navMesh.baseOffset; //otherwise the right cubes stay on the ground
-            // }
-            // else if (rightNavMesh.baseOffset > leftNavMesh.baseOffset)
-            // {
-            //     navMesh.baseOffset = rightNavMesh.baseOffset;
-            //     leftNavMesh.baseOffset = navMesh.baseOffset;
-            // }
-            // else if (leftNavMesh.baseOffset == rightNavMesh.baseOffset)
-            // {
-            //     navMesh.baseOffset = leftNavMesh.baseOffset;
-            // }
-            //navMeshAgent.baseOffset++;
-            // if (navMeshAgent.baseOffset == ((leftChild.position.y * 2) + .5f))
-            // {
-            //     navMeshAgent.baseOffset++;
-            // }
-            //if ()
-            //navMeshAgent.baseOffset++;
-            //if (leftChild.position.y )
-
-            // if (other.gameObject.tag == "LeftStackableCube")
-            // {
-            //     if (stack1.Count >= stack2.Count)
-            //     {
-            //         navMeshAgent.baseOffset++;
-            //     }
-            // }
-            // else if (other.gameObject.tag == "RightStackableCube")
-            // {
-            //     if (stack2.Count >= stack1.Count)
-            //     {
-            //         navMeshAgent.baseOffset++;
-            //     }
-            // }
-            // //else { return; }
         }
 
         else if (other.gameObject.tag == "ObstacleCube" || other.gameObject.tag == "Stair")
@@ -190,15 +151,6 @@ public class StackerCube : MonoBehaviour
             {
                 return;
             }
-            //leftNavMesh.baseOffset++;
-            // if (leftNavMesh.baseOffset == stack1.Count + .5f)
-            // {
-            //     leftNavMesh.baseOffset++;
-            // }
-            // else if (leftNavMesh.baseOffset > stack1.Count + .5f)
-            // {
-            //     return;
-            // }
         }
         else if (other.gameObject.tag == "RightStackableCube")
         {
@@ -220,15 +172,6 @@ public class StackerCube : MonoBehaviour
             {
                 return;
             }
-            // rightNavMesh.baseOffset++;
-            // if (rightNavMesh.baseOffset == stack2.Count + .5f)
-            // {
-            //     rightNavMesh.baseOffset++;
-            // }
-            // else if (rightNavMesh.baseOffset > stack2.Count + .5f)
-            // {
-            //     return;
-            // }
         }
 
         SetNavMeshBaseOffset();
@@ -240,19 +183,11 @@ public class StackerCube : MonoBehaviour
         {
             navMesh.baseOffset = leftNavMesh.baseOffset;
             //rightNavMesh.baseOffset = navMesh.baseOffset; //otherwise the right cubes stay on the ground
-            // if (leftNavMesh.baseOffset > stack1.Count + .5f)
-            // {
-            //     return;
-            // }
         }
         else if (rightNavMesh.baseOffset > leftNavMesh.baseOffset)
         {
             navMesh.baseOffset = rightNavMesh.baseOffset;
             //leftNavMesh.baseOffset = navMesh.baseOffset; //cs:242 and cs:251 are ridiculous when they work together !!!
-            // if (rightNavMesh.baseOffset > stack2.Count + .5f)
-            // {
-            //     return;
-            // }
         }
         else if (leftNavMesh.baseOffset == rightNavMesh.baseOffset)
         {
@@ -322,24 +257,7 @@ public class StackerCube : MonoBehaviour
         if (other.gameObject.tag == "ObstacleCube")
         {
             Invoke("DelayPopedCube", delayInSeconds);    //the movement got worse with IEnumerator
-
-            // if (stack1.Count == 0 || stack2.Count == 0)
-            // {
-            //     trailLeft.enabled = false;
-            //     trailRight.enabled = false;
-            // }
         }
-        // if (other.gameObject.tag == "LeftStackableCube")
-        // {
-        //     popedCube1 = stack1.Pop();
-        //     popedCube1.transform.SetParent(null, true);
-        // }
-        // else if (other.gameObject.tag == "RightStackableCube")
-        // {
-        //     popedCube2 = stack2.Pop();
-        //     popedCube2.transform.SetParent(null, true);
-        // }
-
         else if (other.gameObject.tag == "Stair")
         {
             currentNumb += 2;
@@ -347,32 +265,6 @@ public class StackerCube : MonoBehaviour
         }
 
         other.gameObject.GetComponent<BoxCollider>().enabled = false;
-
-        // else if (stack1.Count == 0 || stack2.Count == 0)
-        // {
-        //     trailLeft.enabled = false;
-        //     trailRight.enabled = false;
-        //     return;
-        // }
-
-        // if (other.gameObject.tag == "ObstacleCube")
-        // {
-        //     Invoke("DelayPopedCube", delayInSeconds);    //the movement got worse with IEnumerator
-
-        //     if (stack1.Count == 0 || stack2.Count == 0)
-        //     {
-        //     trailLeft.enabled = false;
-        //     trailRight.enabled = false;
-        //     }
-        // }
-        // else if (other.gameObject.tag == "Stair")
-        // {
-        //     currentNumb++;
-        //     ShowStairFloatingText("X" + (currentNumb.ToString()));
-        //     //return;
-        // }
-
-        // other.gameObject.GetComponent<BoxCollider>().enabled = false;
     }
 
     void DelayPopedCube()
