@@ -219,7 +219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8301897759993140328, guid: 9fd58da9f2aed614ba6a598c05233ebc, type: 3}
       propertyPath: m_TagString
-      value: RightStackableCube
+      value: StackableCube
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fd58da9f2aed614ba6a598c05233ebc, type: 3}
@@ -303,7 +303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 772671164815439290, guid: d2a7bdb241b569346805e200d5469945, type: 3}
       propertyPath: m_TagString
-      value: RightStackableCube
+      value: StackableCube
       objectReference: {fileID: 0}
     - target: {fileID: 7105273108560198316, guid: d2a7bdb241b569346805e200d5469945, type: 3}
       propertyPath: m_RootOrder
@@ -554,7 +554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3614918176308384834, guid: 9c3c4d2f63d2f2a4f977909b4ad81313, type: 3}
       propertyPath: m_TagString
-      value: LeftStackableCube
+      value: StackableCube
       objectReference: {fileID: 0}
     - target: {fileID: 6487664537945873236, guid: 9c3c4d2f63d2f2a4f977909b4ad81313, type: 3}
       propertyPath: m_RootOrder
@@ -664,7 +664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4695348317847906835, guid: cf5f637e707c1c64299a8f42409bbf20, type: 3}
       propertyPath: m_TagString
-      value: RightStackableCube
+      value: StackableCube
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf5f637e707c1c64299a8f42409bbf20, type: 3}
@@ -700,10 +700,34 @@ PrefabInstance:
       propertyPath: gameOverCanvas
       value: 
       objectReference: {fileID: 1482624030}
+    - target: {fileID: 1918754080547905966, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1289528206}
+    - target: {fileID: 1918754080547905966, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
+      propertyPath: gameOverCanvas
+      value: 
+      objectReference: {fileID: 1482624030}
+    - target: {fileID: 1981183082667266647, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
+      propertyPath: successCanvas
+      value: 
+      objectReference: {fileID: 71073174}
+    - target: {fileID: 1981183082667266647, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
+      propertyPath: gameOverCanvas
+      value: 
+      objectReference: {fileID: 1482624030}
     - target: {fileID: 2157577785754433343, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4343053539019651767, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1289528206}
+    - target: {fileID: 4343053539019651767, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
+      propertyPath: gameOverCanvas
+      value: 
+      objectReference: {fileID: 1482624030}
     - target: {fileID: 6223240711099807637, guid: c0c72eb7087d6e442bf99548a52f9564, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -778,7 +802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 772671164815439290, guid: d2a7bdb241b569346805e200d5469945, type: 3}
       propertyPath: m_TagString
-      value: RightStackableCube
+      value: StackableCube
       objectReference: {fileID: 0}
     - target: {fileID: 7105273108560198316, guid: d2a7bdb241b569346805e200d5469945, type: 3}
       propertyPath: m_RootOrder
@@ -963,7 +987,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 772671164815439290, guid: d2a7bdb241b569346805e200d5469945, type: 3}
       propertyPath: m_TagString
-      value: LeftStackableCube
+      value: StackableCube
       objectReference: {fileID: 0}
     - target: {fileID: 7105273108560198316, guid: d2a7bdb241b569346805e200d5469945, type: 3}
       propertyPath: m_RootOrder
@@ -1029,7 +1053,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3614918176308384834, guid: 9c3c4d2f63d2f2a4f977909b4ad81313, type: 3}
       propertyPath: m_TagString
-      value: RightStackableCube
+      value: StackableCube
       objectReference: {fileID: 0}
     - target: {fileID: 6487664537945873236, guid: 9c3c4d2f63d2f2a4f977909b4ad81313, type: 3}
       propertyPath: m_RootOrder
@@ -1432,7 +1456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5714872927277868208, guid: 29d3515fb40fe2a49bbeaf2914928e94, type: 3}
       propertyPath: m_TagString
-      value: RightStackableCube
+      value: StackableCube
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29d3515fb40fe2a49bbeaf2914928e94, type: 3}
@@ -1614,7 +1638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4695348317847906835, guid: cf5f637e707c1c64299a8f42409bbf20, type: 3}
       propertyPath: m_TagString
-      value: LeftStackableCube
+      value: StackableCube
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf5f637e707c1c64299a8f42409bbf20, type: 3}
@@ -1680,7 +1704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8301897759993140328, guid: 9fd58da9f2aed614ba6a598c05233ebc, type: 3}
       propertyPath: m_TagString
-      value: LeftStackableCube
+      value: StackableCube
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fd58da9f2aed614ba6a598c05233ebc, type: 3}
@@ -1850,7 +1874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5714872927277868208, guid: 29d3515fb40fe2a49bbeaf2914928e94, type: 3}
       propertyPath: m_TagString
-      value: LeftStackableCube
+      value: StackableCube
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29d3515fb40fe2a49bbeaf2914928e94, type: 3}
