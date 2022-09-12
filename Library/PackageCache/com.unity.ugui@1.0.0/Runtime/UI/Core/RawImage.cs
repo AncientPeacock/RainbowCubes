@@ -13,7 +13,6 @@ namespace UnityEngine.UI
     /// best to use it only for backgrounds or temporary visible graphics.
     /// </remarks>
 
-    [RequireComponent(typeof(CanvasRenderer))]
     [AddComponentMenu("UI/Raw Image", 12)]
     public class RawImage : MaskableGraphic
     {
@@ -55,7 +54,6 @@ namespace UnityEngine.UI
         /// </remarks>
         /// <example>
         /// <code>
-        /// <![CDATA[
         /// //Create a new RawImage by going to Create>UI>Raw Image in the hierarchy.
         /// //Attach this script to the RawImage GameObject.
         ///
@@ -76,8 +74,7 @@ namespace UnityEngine.UI
         ///         m_RawImage.texture = m_Texture;
         ///     }
         /// }
-        /// ]]>
-        ///</code>
+        /// </code>
         /// </example>
         public Texture texture
         {
