@@ -83,14 +83,12 @@ public class RightStacker : MonoBehaviour
         
         SetPosition();
         stackedCube.transform.position = new Vector3(xPos, yPos, zPos);
-        stackedCube.transform.parent = gameObject.transform; //SetParent is slightly slower
-        stackedCube.tag = "Untagged"; //otherwise the stuck mechanic (while stuck.Count > 3) breaks cause triggers interact eachother
+        stackedCube.transform.parent = gameObject.transform;
+        stackedCube.tag = "Untagged";
         
         GetRandomEmoji();
         PunchScaleCube(other);
         SetTrailColor();
-
-        //stackedCube.GetComponent<BoxCollider>().enabled = false;
     }
 
     public void SetPosition()
@@ -115,7 +113,7 @@ public class RightStacker : MonoBehaviour
     {
         int randomIndex = Random.Range(0, emojis.Length);
         GameObject instantiatedEmoji = Instantiate(emojis[randomIndex], (transform.position + addPosEmoji), Quaternion.identity) as GameObject;
-        instantiatedEmoji.transform.LookAt(target);     //emoi must be look at the camera
+        instantiatedEmoji.transform.LookAt(target);
         instantiatedEmoji.transform.DOShakeRotation(duration, strenght, vibrato, randomness, true).OnComplete( () => { Destroy(instantiatedEmoji); } );
     }
 

@@ -60,6 +60,6 @@ public class Movement : MonoBehaviour
     {
         Vector3 playerMove = new Vector3(xPos, yPos, zPos);
         playerMove = playerMove.normalized * moveSpeed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + playerMove);    //movement is better when continuous speculative and is kinematic enabled
+        rb.MovePosition(rb.position + playerMove);
     }
 }

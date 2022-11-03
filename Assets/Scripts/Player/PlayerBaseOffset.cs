@@ -67,7 +67,6 @@ public class PlayerBaseOffset : MonoBehaviour
         {
             GetComponent<Movement>().enabled = false;
             gameOverCanvas.enabled = true;
-            //TODO: ADD DEAD OR FALL ANIMATION
         }
     }
 
@@ -89,7 +88,6 @@ public class PlayerBaseOffset : MonoBehaviour
                         rbRight.detectCollisions = true;
                     }
                 }
-                //else { return; }
             }
             else if (other.gameObject.tag == "ObstacleCube")
             {
@@ -97,7 +95,6 @@ public class PlayerBaseOffset : MonoBehaviour
                 {
                     GetComponent<Movement>().enabled = false;
                     gameOverCanvas.enabled = true;
-                    //FindObjectOfType<SceneLoader>().ReloadLevel(); it s not necessary, you already use button
                 }
             }
             else if (other.gameObject.tag == "Stair")
@@ -106,7 +103,6 @@ public class PlayerBaseOffset : MonoBehaviour
                 {
                     GetComponentInParent<Movement>().enabled = false;
                     successCanvas.enabled = true;
-                    //FindObjectOfType<SceneLoader>().LoadNextLevel();
                 }
             }
         }
@@ -118,7 +114,7 @@ public class PlayerBaseOffset : MonoBehaviour
 
         if (other.gameObject.tag == "ObstacleCube")
         {
-            Invoke("DelayPopedCube", delayInSeconds);    //the movement got worse with IEnumerator
+            Invoke("DelayPopedCube", delayInSeconds);
         }
         else if (other.gameObject.tag == "Stair") //PLAYER
         {
@@ -163,7 +159,6 @@ public class PlayerBaseOffset : MonoBehaviour
             GameObject prefab = Instantiate(floatingTextPrefab, transform.position + addPosText, Quaternion.identity);
             prefab.GetComponent<TextMesh>().text = text;
             prefab.transform.DOShakeRotation(duration, strenght, vibrato, randomness, true).OnComplete( () => { Destroy(prefab); } );
-            //prefab.transform.DOMove(transform.position + addPosText, duration, true).OnComplete( () => { Destroy(prefab); } );
         }
     }
 
@@ -172,12 +167,10 @@ public class PlayerBaseOffset : MonoBehaviour
         if (leftNavMesh.baseOffset > rightNavMesh.baseOffset)
         {
             navMesh.baseOffset = leftNavMesh.baseOffset;
-            //rightNavMesh.baseOffset = navMesh.baseOffset; //otherwise the right cubes stay on the ground
         }
         else if (rightNavMesh.baseOffset > leftNavMesh.baseOffset)
         {
             navMesh.baseOffset = rightNavMesh.baseOffset;
-            //leftNavMesh.baseOffset = navMesh.baseOffset; //cs:242 and cs:251 are ridiculous when they work together !!!
         }
         else if (leftNavMesh.baseOffset == rightNavMesh.baseOffset)
         {
