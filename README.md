@@ -20,5 +20,7 @@ ANCIENT PEACOCK ASSESSMENT FOR GAME DEVELOPER CANDIDATES
 		- When you open your case project first time, you may need Device Simulator or Unity Remote to test the game.
 		- You can add, remove and modify anything in the project.
 
-GOOD LUCK!!!
+	SUBMISSION
+		- Clone or fork this repository and put it in your github profile. Don't forget to share your repository link with us.
 
+GOOD LUCK!!!
